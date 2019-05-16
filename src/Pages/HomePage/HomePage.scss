@@ -1,0 +1,52 @@
+.video-recorder-component {
+  text-align: center;
+  .video-recorder-container {
+    width: 640px;
+    display: inline-block;
+    h1 {
+      font-family: "Open Sans", sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+      padding: 0 70px;
+    }
+    .video-recorder {
+      position: relative;
+
+      .video-recorder-actions {
+        position: absolute;
+        bottom: 80px;
+        left: 0;
+        background-color: transparent;
+        display: inline-block;
+        width: 640px;
+        text-align: center;
+        button {
+          border: none;
+          background-color: transparent;
+          color: #fff;
+          &:hover {
+            cursor: pointer;
+            &::before {
+              content: "";
+            }
+          }
+        }
+        .recBtn {
+          width: 114px;
+        }
+        .stopBtn {
+          width: 96px;
+        }
+      }
+      .video-recorder-btn {
+        text-align: right;
+        #videoCreatedLink {
+          float: left;
+        }
+      }
+    }
+  }
+}

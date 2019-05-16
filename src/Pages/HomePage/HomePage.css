@@ -1,0 +1,38 @@
+.video-recorder-component {
+  text-align: center; }
+  .video-recorder-component .video-recorder-container {
+    width: 640px;
+    display: inline-block; }
+    .video-recorder-component .video-recorder-container h1 {
+      font-family: "Open Sans", sans-serif;
+      font-weight: bold;
+      font-size: 20px; }
+    .video-recorder-component .video-recorder-container p {
+      font-size: 15px;
+      padding: 0 70px; }
+    .video-recorder-component .video-recorder-container .video-recorder {
+      position: relative; }
+      .video-recorder-component .video-recorder-container .video-recorder .video-recorder-actions {
+        position: absolute;
+        bottom: 80px;
+        left: 0;
+        background-color: transparent;
+        display: inline-block;
+        width: 640px;
+        text-align: center; }
+        .video-recorder-component .video-recorder-container .video-recorder .video-recorder-actions button {
+          border: none;
+          background-color: transparent;
+          color: #fff; }
+          .video-recorder-component .video-recorder-container .video-recorder .video-recorder-actions button:hover {
+            cursor: pointer; }
+            .video-recorder-component .video-recorder-container .video-recorder .video-recorder-actions button:hover::before {
+              content: ""; }
+        .video-recorder-component .video-recorder-container .video-recorder .video-recorder-actions .recBtn {
+          width: 114px; }
+        .video-recorder-component .video-recorder-container .video-recorder .video-recorder-actions .stopBtn {
+          width: 96px; }
+      .video-recorder-component .video-recorder-container .video-recorder .video-recorder-btn {
+        text-align: right; }
+        .video-recorder-component .video-recorder-container .video-recorder .video-recorder-btn #videoCreatedLink {
+          float: left; }
