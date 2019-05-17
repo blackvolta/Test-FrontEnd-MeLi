@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 class Item extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.data);
   }
 
   render() {
@@ -16,11 +17,11 @@ class Item extends Component {
         <div className="producto-info">
           <div className="producto-price">
             <span>$</span>
-            {this.props.data.price}
+            {this.props.data.price.currency}
           </div>
           <div className="producto-title">{this.props.data.title}</div>
         </div>
-        <div className="producto-location">{this.props.data.location}</div>
+        <div className="producto-location">{this.props.data.address}</div>
       </a>
     );
   }

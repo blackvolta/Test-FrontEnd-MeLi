@@ -15,16 +15,16 @@ class ListPage extends Component {
     };
   }
   componentDidMount() {
-    const API = "/api/items/list:";
+    const API = "http://localhost:5000/api/items/list:";
     const query = this.getQuery();
+    console.log(query);
     axios
       .get(API + query)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-
+      .then(res => {
+        console.log("adentro");
+        console.log(res.data.items);
         this.setState({
-          items: data.items,
+          items: res.data.items,
           isLoaded: true
         });
       })
@@ -37,9 +37,8 @@ class ListPage extends Component {
   getQuery() {
     const values = queryString.parse(this.props.location.search);
     const search = values.search;
-    console.log(search);
-    //const search = queryString.parse(location.search);
-    return search.search;
+    //&console.log(search);
+    return search;
   }
 
   render() {
@@ -48,8 +47,8 @@ class ListPage extends Component {
     } else {
       return (
         <div className="row" id="listado-resultados">
-          {this.state.items.map(item => (
-            <Item data={item} />
+          {this.state.items.map((item, i) => (
+            <Item data={item} key={i} />
           ))}
         </div>
       );

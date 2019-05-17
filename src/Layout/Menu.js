@@ -18,7 +18,7 @@ class Menu extends Component {
   }
   handleSearchSubmit = e => {
     e.preventDefault();
-    this.props.history.push(`/items?search=:${this.state.searchValue}`);
+    this.props.history.push(`/items?search=${this.state.searchValue}`);
   };
 
   render() {

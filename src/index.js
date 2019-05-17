@@ -15,8 +15,8 @@ ReactDOM.render(
     <div>
       <Route component={Menu} />
       <Route path="/" exact component={HomePage} />
-      <Route path="/items?search=" component={ListPage} />
-      <Route path="/items/:id" exact component={DetailPage} />
+      <Route path="/items" component={ListPage} />
+      <Route path="/items/:id" component={DetailPage} />
     </div>
   </BrowserRouter>,
   document.getElementById("root")
