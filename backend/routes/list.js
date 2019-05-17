@@ -10,35 +10,42 @@ function buscarItems(req, res) {
     .get(searchPath)
     .then(response => {
       const items = response.data.results;
-      const ids = items.map(item => item.id);
-      if (items.length > 0) {
-        const categoryId = items[0].category_id;
-        const itemsPath = `https://api.mercadolibre.com/items?ids=${ids.join(
-          ","
-        )}`;
-        const categoriesPath = `https://api.mercadolibre.com/categories/${categoryId}`;
-        return axios.all([axios.get(itemsPath), axios.get(categoriesPath)]);
+      const itemsResponse = items.map(item => {
+        const amount = Math.floor(item.price);
+        const decimals = +(item.price % 1).toFixed(2).substring(2);
+        return {
+          id: item.id,
+          title: item.title,
+          price: {
+            currency: item.currency_id,
+            amount: amount,
+            decimals: decimals
+          },
+          picture: item.thumbnail,
+          condition: item.condition,
+          free_shipping: item.shipping ? item.shipping.free_shipping : false,
+          address: item.address ? item.address.state_name : ""
+        };
+      });
+      let categories = [];
+      if (response.data.filters[0] && response.data.filters[0].values[0]) {
+        categories = response.data.filters[0].values[0].path_from_root.map(
+          category => {
+            return category.name;
+          }
+        );
       }
+      const author = {
+        name: "Adrian",
+        lastname: "Barragan"
+      };
+      const searchResponse = {
+        author: author,
+        items: itemsResponse,
+        categories: categories
+      };
+      return res.send(searchResponse);
     })
-    .then(
-      axios.spread((items, categories) => {
-        return res.send({
-          items: items.map(item => ({
-            id: item.id,
-            title: item.title,
-            picture: item.pictures[0].url,
-            price: {
-              currency: item.currency_id,
-              amount: item.price
-            },
-            condition: item.condition,
-            freeShipping: item.shipping.free_shipping,
-            location: item.seller_address.state.name
-          })),
-          categories: categories.data.path_from_root.map(item => item.name)
-        });
-      })
-    )
     .catch(() => res.send({ items: [], categories: [] }));
 }
 
