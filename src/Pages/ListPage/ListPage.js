@@ -15,13 +15,25 @@ class ListPage extends Component {
     };
   }
   componentDidMount() {
-    const API = "http://localhost:5000/api/items/list:";
+    this.getResults();
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search != this.props.location.search) {
+      this.setState({
+        items: [],
+        error: null,
+        isLoaded: false
+      });
+      this.getResults();
+    }
+  }
+  getResults() {
+    const API = "http://localhost:5000/api/items/list";
     const query = this.getQuery();
     console.log(query);
     axios
       .get(API + query)
       .then(res => {
-        console.log("adentro");
         console.log(res.data.items);
         this.setState({
           items: res.data.items,

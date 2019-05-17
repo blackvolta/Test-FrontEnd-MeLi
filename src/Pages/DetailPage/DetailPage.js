@@ -12,13 +12,13 @@ class DetailPage extends Component {
     };
   }
   componentDidMount() {
-    fetch("/api/items/detail:" + this.props.match.params.id)
+    fetch("/api/items/detail" + this.props.match.params.id)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        console.log(data.item);
 
         this.setState({
-          perfil: data,
+          perfil: data.item,
           isLoaded: true
         });
       });
@@ -33,15 +33,13 @@ class DetailPage extends Component {
         <div className="detalle-info">
           <div className="condicion">Nuevo</div>
           <div className="cantidad-vendidos">- 0 vendidos</div>
-          <h1 className="title">
-            Perro Lobo Americano 75 A 90%+ (resto Ovejero Alemán Blanco)
-          </h1>
+          <h1 className="title">Perro Lobo {this.state.perfil.title}</h1>
           <div className="price">
             <span>$</span>115000
           </div>
-          <a href className="btn btn-primary">
+          <button type="button" className="btn btn-primary">
             Comprar
-          </a>
+          </button>
         </div>
         <h3>Descripción del producto</h3>
         <div id="producto-descripcion" />
