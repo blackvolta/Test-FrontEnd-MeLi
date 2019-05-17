@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import Perfil from "../../Components/Perfil";
+import axios from "axios";
+import "./Detail.css";
 
 class PerfilPage extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
       perfil: [],
       error: null,
       isLoaded: false
     };
   }
-  componentWillMount() {
-    fetch(
-      "https://jsonplaceholder.typicode.com/users/" + this.props.match.params.id
-    )
+  componentDidMount() {
+    fetch("/api/items/detail" + this.props.match.params.id)
       .then(res => res.json())
       .then(data => {
         console.log(data);

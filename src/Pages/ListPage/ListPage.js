@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Item from "../../Components/Item";
-import "./Home.css";
+import "./List.css";
+import { Link } from "react-router-dom";
+const API = "/api/items/list:query";
+
 class HomePage extends Component {
   constructor() {
     super();
     this.state = {
-      visible: true,
-      items_visibles: true,
       items: [],
       error: null,
       isLoaded: false
     };
   }
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    axios
+      .get(API)
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -22,38 +25,25 @@ class HomePage extends Component {
           items: data,
           isLoaded: true
         });
-      });
+      })
+      .catch(error =>
+        this.setState({
+          error
+        })
+      );
   }
 
-  ocultarComponente() {
-    this.setState({
-      visible: false
-    });
-  }
-  ocultarItems() {
-    this.setState({
-      items_visibles: false
-    });
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps, nextState);
-    return true;
-  }
   render() {
-    if (this.state.visible) {
-      if (!this.state.isLoaded) {
-        return <div className="App">Cargando ...</div>;
-      } else {
-        return (
-          <div className="row" id="listado-resultados">
-            {this.state.items.map(item => (
-              <Item data={item} />
-            ))}
-          </div>
-        );
-      }
+    if (!this.state.isLoaded) {
+      return <div className="App">Cargando ...</div>;
     } else {
-      return <div className="App">Acceso restringido</div>;
+      return (
+        <div className="row" id="listado-resultados">
+          {this.state.items.map(item => (
+            <Item data={item} />
+          ))}
+        </div>
+      );
     }
   }
 }

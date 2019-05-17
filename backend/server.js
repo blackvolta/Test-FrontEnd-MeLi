@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //APPLICATION EXPRESS ROUTES
-app.use("/api/items?q=:query", ListRoute);
-app.use("/api/items/:id", DetailRoute);
+app.use("/api/items/list:query", ListRoute);
+app.use("/api/items/detail:id", DetailRoute);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

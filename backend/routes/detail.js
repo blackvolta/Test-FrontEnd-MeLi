@@ -1,73 +1,46 @@
-const request = require("request");
+const express = require("express");
+const axios = require("axios");
+const router = express.Router();
 
-module.exports = function(req, res) {
-  const id = req.params.id;
-  request("https://api.mercadolibre.com/items/" + id, function(
-    error,
-    response,
-    body
-  ) {
-    const data = JSON.parse(body);
-    if (!data.error) {
-      const amount = Math.floor(data.price);
-      const decimals = +(data.price % 1).toFixed(2).substring(2);
-      const picture = data.pictures.length ? data.pictures[0].secure_url : "";
-      const category = data.category_id;
-
-      var detail = {
-        author: {
-          name: "Adrian",
-          lastname: "Barragan"
-        },
-        categories: [],
-        item: {
-          id: data.id,
-          title: data.title,
-          price: {
-            currency: "ars",
-            amount: amount,
-            decimals: decimals
-          },
-          picture: picture,
-          condition: data.condition,
-          free_shipping: data.shipping ? data.shipping.free_shipping : false,
-          sold_quantity: data.sold_quantity,
-          description: ""
-        }
-      };
-      request(
-        "https://api.mercadolibre.com/items/" + id + "/description",
-        function(error, response, body) {
-          if (!error) {
-            const data = JSON.parse(body);
-            if (!data.error) {
-              detail.item.description = data.plain_text;
+function buscarDetail(req, res) {
+  router.get("/api/items/:id", (req, res) => {
+    const itemsPath = `https://api.mercadolibre.com/items/${req.params.id}`;
+    const itemsDescriptionPath = `https://api.mercadolibre.com/items/${
+      req.params.id
+    }/description`;
+    return axios
+      .all([axios.get(itemsPath), axios.get(itemsDescriptionPath)])
+      .then(
+        axios.spread((items, descriptions) => {
+          const item = items.data;
+          const description = descriptions.data;
+          const response = {
+            item: {
+              title: item.title,
+              picture: item.pictures[0].url,
+              price: {
+                currency: item.currency_id,
+                amount: item.price
+              },
+              condition: item.condition,
+              freeShipping: item.shipping.free_shipping,
+              description: description.plain_text,
+              soldQuantity: item.sold_quantity
             }
-            request(
-              "https://api.mercadolibre.com/categories/" + category,
-              function(error, response, body) {
-                if (!error) {
-                  const data = JSON.parse(body);
-                  if (!data.error) {
-                    detail.categories = categories = data.path_from_root.map(
-                      category => {
-                        return category.name;
-                      }
-                    );
-                  }
-                  res.send(detail);
-                } else {
-                  res.send(errorML);
-                }
-              }
+          };
+          const categoriesPath = `https://api.mercadolibre.com/categories/${
+            item.category_id
+          }`;
+          axios.get(categoriesPath).then(items => {
+            response.categories = items.data.path_from_root.map(
+              item => item.name
             );
-          } else {
-            res.send(errorML);
-          }
-        }
-      );
-    } else {
-      res.send(data);
-    }
+            return res.send(response);
+          });
+        })
+      )
+      .catch(() => res.send({ items: [], categories: [] }));
   });
-};
+}
+
+module.exports = buscarDetail;

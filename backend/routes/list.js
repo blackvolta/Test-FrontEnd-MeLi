@@ -1,48 +1,47 @@
-const request = require("request");
+const express = require("express");
+const axios = require("axios");
+const router = express.Router();
 
-module.exports = function(req, res) {
-  const query = req.query.q || "";
-  request("https://api.mercadolibre.com/sites/MLA/search?q=" + query, function(
-    error,
-    response,
-    body
-  ) {
-    const data = JSON.parse(body);
-    if (data.results) {
-      var categories = [];
-      if (data.filters[0] && data.filters[0].values[0]) {
-        categories = data.filters[0].values[0].path_from_root.map(category => {
-          return category.name;
-        });
-      }
-      var items = data.results.slice(0, 4);
-      items = items.map(item => {
-        const amount = Math.floor(item.price);
-        const decimals = +(item.price % 1).toFixed(2).substring(2);
-        return {
-          id: item.id,
-          title: item.title,
-          price: {
-            currency: item.currency_id,
-            amount: amount,
-            decimals: decimals
-          },
-          picture: item.thumbnail,
-          condition: item.condition,
-          free_shipping: item.shipping ? item.shipping.free_shipping : false,
-          address: item.address ? item.address.state_name : ""
-        };
-      });
-
-      const list = {
-        author: {
-          name: "Adrian",
-          lastname: "Barragan"
-        },
-        categories: categories,
-        items: items
-      };
-      res.send(list);
-    }
+function buscarItems(req, res) {
+  router.get("/api/items?q=​:query", (req, res) => {
+    const searchPath = `https://api.mercadolibre.com/sites/MLA/search?q=%27${
+      req.query.q
+    }%27&limit=4`;
+    return axios
+      .get(searchPath)
+      .then(response => {
+        const items = response.data.results;
+        const ids = items.map(item => item.id);
+        if (items.length > 0) {
+          const categoryId = items[0].category_id;
+          const itemsPath = `https://api.mercadolibre.com/items?ids=${ids.join(
+            ","
+          )}`;
+          const categoriesPath = `https://api.mercadolibre.com/categories/${categoryId}`;
+          return axios.all([axios.get(itemsPath), axios.get(categoriesPath)]);
+        }
+      })
+      .then(
+        axios.spread((items, categories) => {
+          return res.send({
+            items: items.data.map(item => ({
+              id: item.id,
+              title: item.title,
+              picture: item.pictures[0].url,
+              price: {
+                currency: item.currency_id,
+                amount: item.price
+              },
+              condition: item.condition,
+              freeShipping: item.shipping.free_shipping,
+              location: item.seller_address.state.name
+            })),
+            categories: categories.data.path_from_root.map(item => item.name)
+          });
+        })
+      )
+      .catch(() => res.send({ items: [], categories: [] }));
   });
-};
+}
+
+module.exports = buscarItems;
