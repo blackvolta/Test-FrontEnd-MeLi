@@ -7,10 +7,18 @@ import "./Menu.css";
 class Menu extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchValue: ""
+    };
+  }
+  updateInputValue(event) {
+    this.setState({
+      searchValue: event.target.value || ""
+    });
   }
   handleSearchSubmit = e => {
     e.preventDefault();
-    this.props.history.push({ pathname: "/items", search: `search=${search}` });
+    this.props.history.push(`/items?search=:${this.state.searchValue}`);
   };
 
   render() {
@@ -24,6 +32,7 @@ class Menu extends Component {
             type="text"
             name="searchbox"
             id="searchbox"
+            onChange={e => this.updateInputValue(e)}
             className="input-search"
             placeholder="No dejes de buscar"
             tabIndex={2}

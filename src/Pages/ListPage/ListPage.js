@@ -3,9 +3,9 @@ import axios from "axios";
 import Item from "../../Components/Item";
 import "./ListPage.css";
 import { Link } from "react-router-dom";
-const API = "/api/items/list:query";
+import queryString from "query-string";
 
-class HomePage extends Component {
+class ListPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,14 +15,16 @@ class HomePage extends Component {
     };
   }
   componentDidMount() {
+    const API = "/api/items/list:";
+    const query = this.getQuery();
     axios
-      .get(API)
+      .get(API + query)
       .then(res => res.json())
       .then(data => {
         console.log(data);
 
         this.setState({
-          items: data,
+          items: data.items,
           isLoaded: true
         });
       })
@@ -31,6 +33,13 @@ class HomePage extends Component {
           error
         })
       );
+  }
+  getQuery() {
+    const values = queryString.parse(this.props.location.search);
+    const search = values.search;
+    console.log(search);
+    //const search = queryString.parse(location.search);
+    return search.search;
   }
 
   render() {
@@ -48,4 +57,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default ListPage;

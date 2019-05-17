@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./DetailPage.css";
 
-class PerfilPage extends Component {
+class DetailPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class PerfilPage extends Component {
   }
 }
 
-export default PerfilPage;
+export default DetailPage;

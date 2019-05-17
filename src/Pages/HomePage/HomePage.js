@@ -7,7 +7,7 @@ class HomePage extends Component {
   componentDidMount() {}
 
   render() {
-    return <div class="row" />;
+    return <div />;
   }
 }
 
