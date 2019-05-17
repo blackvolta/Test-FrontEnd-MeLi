@@ -7,24 +7,33 @@ function buscarDetail(req, res) {
   const itemsDescriptionPath = `https://api.mercadolibre.com/items/${
     req.params.id
   }/description`;
+  const itemId = `${req.params.id}`;
   return axios
     .all([axios.get(itemsPath), axios.get(itemsDescriptionPath)])
     .then(
       axios.spread((items, descriptions) => {
         const item = items.data;
+        const amount = Math.floor(item.price);
+        const decimals = +(item.price % 1).toFixed(2).substring(2);
         const description = descriptions.data;
         const response = {
+          author: {
+            name: "Adrian",
+            lastname: "Barragan"
+          },
           item: {
+            id: itemId,
             title: item.title,
-            picture: item.pictures[0].url,
             price: {
               currency: item.currency_id,
-              amount: item.price
+              amount: amount,
+              decimals: decimals
             },
+            picture: item.pictures[0].url,
             condition: item.condition,
             freeShipping: item.shipping.free_shipping,
-            description: description.plain_text,
-            soldQuantity: item.sold_quantity
+            soldQuantity: item.sold_quantity,
+            description: description.plain_text
           }
         };
         const categoriesPath = `https://api.mercadolibre.com/categories/${

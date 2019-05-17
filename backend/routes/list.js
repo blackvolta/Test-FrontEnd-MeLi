@@ -23,8 +23,7 @@ function buscarItems(req, res) {
           },
           picture: item.thumbnail,
           condition: item.condition,
-          free_shipping: item.shipping ? item.shipping.free_shipping : false,
-          address: item.address ? item.address.state_name : ""
+          free_shipping: item.shipping ? item.shipping.free_shipping : false
         };
       });
       let categories = [];
@@ -41,8 +40,8 @@ function buscarItems(req, res) {
       };
       const searchResponse = {
         author: author,
-        items: itemsResponse,
-        categories: categories
+        categories: categories,
+        items: itemsResponse
       };
       return res.send(searchResponse);
     })
