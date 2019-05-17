@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Item from "../../Components/Item";
-import "./List.css";
+import "./ListPage.css";
 import { Link } from "react-router-dom";
 const API = "/api/items/list:query";
 

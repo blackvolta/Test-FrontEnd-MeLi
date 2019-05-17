@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./Detail.css";
+import "./DetailPage.css";
 
 class PerfilPage extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class PerfilPage extends Component {
     };
   }
   componentDidMount() {
-    fetch("/api/items/detail" + this.props.match.params.id)
+    fetch("/api/items/detail:" + this.props.match.params.id)
       .then(res => res.json())
       .then(data => {
         console.log(data);

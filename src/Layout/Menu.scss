@@ -1,6 +1,54 @@
-.hola {
-  padding: 10px;
-  &.subhi {
-    padding: 20px;
+@import "../Assets/Sass/variables_site.scss";
+
+header {
+  background-color: $brand-secondary;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 55px;
+  text-align: center;
+  z-index: 2;
+  .logo {
+    height: 100%;
+    padding: 9px 20px 9px 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+  form {
+    width: 70%;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    margin-top: 9px;
+    height: 36px;
+    .input-search {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 3px;
+      padding: 5px 15px;
+      font-size: 16px;
+      &:focus {
+        outline: 0;
+      }
+    }
+    button[type="submit"] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 40px;
+      border: none;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      background-color: $brand-grey_light;
+      img {
+        width: 18px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

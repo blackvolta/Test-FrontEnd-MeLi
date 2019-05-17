@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../Images/logo.svg";
+import logo from "../Assets/Images/Logo_ML.png";
+import searchIcon from "../Assets/Images/ic_Search.png";
 import "./Menu.css";
 
 class Menu extends Component {
@@ -9,14 +10,14 @@ class Menu extends Component {
   }
   handleSearchSubmit = e => {
     e.preventDefault();
-    this.props.onSearchSubmit(this.query.value);
+    this.props.history.push({ pathname: "/items", search: `search=${search}` });
   };
 
   render() {
     return (
       <header>
         <a href="/">
-          <img className="logo" src="images/Logo_ML.png" tabIndex={1} />
+          <img className="logo" src={logo} tabIndex={1} />
         </a>
         <form action="" onSubmit={this.handleSearchSubmit}>
           <input
@@ -28,7 +29,7 @@ class Menu extends Component {
             tabIndex={2}
           />
           <button type="submit" alt="buscar" tabIndex={3}>
-            <img src="images/ic_Search.png" />
+            <img src={searchIcon} />
           </button>
         </form>
       </header>

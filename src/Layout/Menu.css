@@ -1,4 +1,44 @@
-.hola {
-  padding: 10px; }
-  .hola.subhi {
-    padding: 20px; }
+header {
+  background-color: #ffe600;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 55px;
+  text-align: center;
+  z-index: 2; }
+  header .logo {
+    height: 100%;
+    padding: 9px 20px 9px 0;
+    display: inline-block;
+    vertical-align: top; }
+  header form {
+    width: 70%;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    margin-top: 9px;
+    height: 36px; }
+    header form .input-search {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 3px;
+      padding: 5px 15px;
+      font-size: 16px; }
+      header form .input-search:focus {
+        outline: 0; }
+    header form button[type="submit"] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 40px;
+      border: none;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      background-color: #eeeeee; }
+      header form button[type="submit"] img {
+        width: 18px; }
+      header form button[type="submit"]:hover {
+        cursor: pointer; }
