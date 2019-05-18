@@ -4,8 +4,8 @@ const meliRouter = express.Router();
 const detail = require("./detail");
 const list = require("./list");
 
-meliRouter.get("/items", list);
+meliRouter.get("/api/items", list);
 
-meliRouter.get("/items/:id", detail);
+meliRouter.get("/api/items/:id", detail);
 
 module.exports = meliRouter;

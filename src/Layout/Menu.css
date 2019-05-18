@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  background-color: #eee; }
+
 header {
   background-color: #ffe600;
   position: fixed;

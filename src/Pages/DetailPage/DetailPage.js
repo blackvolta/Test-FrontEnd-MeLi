@@ -12,7 +12,7 @@ class DetailPage extends Component {
     };
   }
   componentDidMount() {
-    fetch("/api/items/detail" + this.props.match.params.id)
+    fetch("/api/items/" + this.props.match.params.id)
       .then(res => res.json())
       .then(data => {
         console.log(data.item);

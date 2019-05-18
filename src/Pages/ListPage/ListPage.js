@@ -28,7 +28,7 @@ class ListPage extends Component {
     }
   }
   getResults() {
-    const API = "http://localhost:5000/api/items/list";
+    const API = "/api/items?q=";
     const query = this.getQuery();
     console.log(query);
     axios

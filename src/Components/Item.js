@@ -10,10 +10,7 @@ class Item extends Component {
   render() {
     return (
       <a className="producto" href="detalle.html?id=MLA647579156">
-        <img
-          className="producto-img"
-          src="http://mla-s1-p.mlstatic.com/752415-MLA25242878719_122016-I.jpg"
-        />
+        <img className="producto-img" src={this.props.data.picture} />
         <div className="producto-info">
           <div className="producto-price">
             <span>$</span>

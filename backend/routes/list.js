@@ -1,11 +1,9 @@
-const express = require("express");
 const axios = require("axios");
-const router = express.Router();
 
 function buscarItems(req, res) {
-  const searchPath = `https://api.mercadolibre.com/sites/MLA/search?q=%27${
-    req.params.query
-  }%27&limit=4`;
+  const query = req.query.q;
+  const searchPath =
+    "https://api.mercadolibre.com/sites/MLA/search?q=" + query + "&limit=4";
   return axios
     .get(searchPath)
     .then(response => {
