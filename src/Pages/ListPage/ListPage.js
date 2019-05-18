@@ -58,10 +58,16 @@ class ListPage extends Component {
       return <div className="App">Cargando ...</div>;
     } else {
       return (
-        <div className="row" id="listado-resultados">
-          {this.state.items.map((item, i) => (
-            <Item data={item} key={i} />
-          ))}
+        <div className="container">
+          <div className="row">
+            <div className="col-md-10 col-md-offset-1">
+              <div className="row" id="listado-resultados">
+                {this.state.items.map((item, i) => (
+                  <Item data={item} key={i} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       );
     }
