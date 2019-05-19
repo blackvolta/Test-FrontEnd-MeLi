@@ -34,7 +34,7 @@ class Menu extends Component {
             id="searchbox"
             onChange={e => this.updateInputValue(e)}
             className="input-search"
-            placeholder="No dejes de buscar"
+            placeholder="Nunca dejes de buscar"
             tabIndex={2}
           />
           <button type="submit" alt="buscar" tabIndex={3}>

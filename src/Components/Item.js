@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import shipping_ic from "../Assets/Images/ic_shipping.png";
+import "./Item.css";
 
 class Item extends Component {
   constructor(props) {
@@ -8,6 +10,7 @@ class Item extends Component {
   }
 
   render() {
+    const freeShipping = this.props.data.free_shipping;
     return (
       <div className="producto">
         <Link className="link" to={"/items/" + this.props.data.id}>
@@ -17,6 +20,8 @@ class Item extends Component {
           <div className="producto-price">
             <span>$</span>
             {this.props.data.price.amount}
+
+            {freeShipping && <img className="shipping-img" src={shipping_ic} />}
           </div>
           <div className="producto-title">
             <Link className="link" to={"/items/" + this.props.data.id}>

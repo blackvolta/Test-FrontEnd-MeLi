@@ -10,3 +10,7 @@
       vertical-align: text-top; }
     #breadcrumb .breadcrumb-item:last-of-type::after {
       content: ""; }
+
+@media screen and (max-width: 768px) {
+  #breadcrumb {
+    padding-left: 10px; } }

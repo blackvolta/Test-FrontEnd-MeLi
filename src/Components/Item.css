@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  background-color: #eee; }
+
+.producto {
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid #eeeeee;
+  position: relative; }
+  .producto .producto-img {
+    height: 180px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: top; }
+  .producto .producto-info {
+    display: inline-block;
+    width: 60%;
+    padding: 0 10px; }
+    .producto .producto-info .producto-price {
+      font-size: 24px;
+      margin-top: 20px;
+      margin-bottom: 26px; }
+      .producto .producto-info .producto-price span {
+        padding-right: 5px; }
+      .producto .producto-info .producto-price .shipping-img {
+        padding: 0 10px;
+        margin-top: -4px; }
+    .producto .producto-info .producto-title {
+      font-size: 18px; }
+  .producto .producto-location {
+    font-size: 12px;
+    display: inline-block;
+    color: #333333;
+    vertical-align: top;
+    padding-top: 20px; }
+  .producto:hover {
+    cursor: pointer; }
+  .producto:last-of-type {
+    border-bottom: none; }
