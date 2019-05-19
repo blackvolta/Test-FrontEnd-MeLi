@@ -1,10 +1,18 @@
-.breadcrumb-item {
-  &::after {
-    content: ">";
-  }
-  &:last-of-type {
+#breadcrumb {
+  margin-top: 71px;
+  font-size: 14px;
+  .breadcrumb-item {
+    color: #999;
     &::after {
-      content: "";
+      content: ">";
+      padding: 5px;
+      font-size: 10px;
+      vertical-align: text-top;
+    }
+    &:last-of-type {
+      &::after {
+        content: "";
+      }
     }
   }
 }

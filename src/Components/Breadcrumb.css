@@ -1,5 +1,12 @@
-.breadcrumb-item::after {
-  content: ">"; }
-
-.breadcrumb-item:last-of-type::after {
-  content: ""; }
+#breadcrumb {
+  margin-top: 71px;
+  font-size: 14px; }
+  #breadcrumb .breadcrumb-item {
+    color: #999; }
+    #breadcrumb .breadcrumb-item::after {
+      content: ">";
+      padding: 5px;
+      font-size: 10px;
+      vertical-align: text-top; }
+    #breadcrumb .breadcrumb-item:last-of-type::after {
+      content: ""; }

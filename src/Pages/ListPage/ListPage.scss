@@ -1,13 +1,13 @@
 @import "../../Assets/Sass/variables_site.scss";
 
 #listado-resultados {
-  margin-top: 50px;
+  margin-top: 16px;
   background-color: #fff;
   border-radius: 4px;
-  padding: 10px;
+  padding: 0 16px;
   .producto {
     display: block;
-    padding: 8px 0;
+    padding: 16px 0;
     border-bottom: 1px solid $brand-grey_light;
     position: relative;
     .producto-img {

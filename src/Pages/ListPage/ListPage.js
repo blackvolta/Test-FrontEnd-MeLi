@@ -65,7 +65,7 @@ class ListPage extends Component {
             <div className="col-md-10 col-md-offset-1">
               <div className="row" id="breadcrumb">
                 {this.state.categories.map((category, i) => (
-                  <Breadcrumb data={category} key={i} />
+                  <Breadcrumb category={category} key={i} />
                 ))}
               </div>
               <div className="row" id="listado-resultados">
