@@ -16,6 +16,7 @@
     width: 60%;
     padding: 0 10px;
     .producto-price {
+      color: $brand-grey_dark;
       font-size: 24px;
       margin-top: 20px;
       margin-bottom: 26px;
@@ -29,14 +30,18 @@
     }
     .producto-title {
       font-size: 18px;
+      .link {
+        text-decoration: none;
+        color: $brand-grey_dark;
+      }
     }
   }
   .producto-location {
     font-size: 12px;
     display: inline-block;
-    color: $brand-grey_dark;
+    color: $brand-grey_middark;
     vertical-align: top;
-    padding-top: 20px;
+    padding-top: 35px;
   }
   &:hover {
     cursor: pointer;
