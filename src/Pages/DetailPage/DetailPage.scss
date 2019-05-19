@@ -1,20 +1,25 @@
+@import "../../Assets/Sass/variables_site.scss";
+
 #producto-detalle {
-  margin-top: 60px;
+  margin-top: 16px;
   background-color: #fff;
   border-radius: 4px;
-  padding: 10px;
+  padding: 32px;
   .producto-img {
-    width: 680px;
+    display: inline-block;
+    vertical-align: top;
+    width: 67%;
   }
   .detalle-info {
     display: inline-block;
     vertical-align: top;
-    padding: 32px 0 16px 25px;
-    width: 320px;
+    padding: 0 0 16px 25px;
+    width: 33%;
     .condicion {
       display: inline-block;
       padding-right: 5px;
       font-size: 14px;
+      text-transform: capitalize;
     }
     .cantidad-vendidos {
       display: inline-block;
@@ -27,19 +32,34 @@
     }
     .price {
       font-size: 46px;
-      margin: 36px 0;
+      margin: 32px 0;
+      .priceDecimals {
+        vertical-align: super;
+        font-size: 22px;
+      }
     }
     .btn-primary {
       background-color: #3483fa;
       color: #fff;
       border-radius: 3px;
-      padding: 10px 90px;
+      padding: 10px;
       font-size: 16px;
+      width: 100%;
+      margin-left: 0;
+      &:hover {
+        background-color: #408cfd;
+      }
     }
   }
   h3 {
-    margin: 30px 0 20px;
   }
-  #producto-descripcion {
+  .producto-descripcion-title {
+    margin: 32px 0;
+    color: $brand-grey_dark;
+    font-size: 28px;
+  }
+  .producto-descripcion {
+    color: $brand-grey_middark;
+    font-size: 16px;
   }
 }

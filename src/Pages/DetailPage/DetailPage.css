@@ -1,19 +1,26 @@
+body {
+  margin: 0;
+  background-color: #eee; }
+
 #producto-detalle {
-  margin-top: 60px;
+  margin-top: 16px;
   background-color: #fff;
   border-radius: 4px;
-  padding: 10px; }
+  padding: 32px; }
   #producto-detalle .producto-img {
-    width: 680px; }
+    display: inline-block;
+    vertical-align: top;
+    width: 67%; }
   #producto-detalle .detalle-info {
     display: inline-block;
     vertical-align: top;
-    padding: 32px 0 16px 25px;
-    width: 320px; }
+    padding: 0 0 16px 25px;
+    width: 33%; }
     #producto-detalle .detalle-info .condicion {
       display: inline-block;
       padding-right: 5px;
-      font-size: 14px; }
+      font-size: 14px;
+      text-transform: capitalize; }
     #producto-detalle .detalle-info .cantidad-vendidos {
       display: inline-block;
       font-size: 14px; }
@@ -23,12 +30,24 @@
       margin-bottom: 0; }
     #producto-detalle .detalle-info .price {
       font-size: 46px;
-      margin: 36px 0; }
+      margin: 32px 0; }
+      #producto-detalle .detalle-info .price .priceDecimals {
+        vertical-align: super;
+        font-size: 22px; }
     #producto-detalle .detalle-info .btn-primary {
       background-color: #3483fa;
       color: #fff;
       border-radius: 3px;
-      padding: 10px 90px;
-      font-size: 16px; }
-  #producto-detalle h3 {
-    margin: 30px 0 20px; }
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-left: 0; }
+      #producto-detalle .detalle-info .btn-primary:hover {
+        background-color: #408cfd; }
+  #producto-detalle .producto-descripcion-title {
+    margin: 32px 0;
+    color: #333333;
+    font-size: 28px; }
+  #producto-detalle .producto-descripcion {
+    color: #666666;
+    font-size: 16px; }
