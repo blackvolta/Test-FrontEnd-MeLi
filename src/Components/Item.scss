@@ -5,16 +5,18 @@
   padding: 16px 0;
   border-bottom: 1px solid $brand-grey_light;
   position: relative;
+  .link {
+    display: inline-block;
+    vertical-align: top;
+  }
   .producto-img {
     height: 180px;
     border-radius: 4px;
-    display: inline-block;
-    vertical-align: top;
   }
   .producto-info {
     display: inline-block;
     width: 60%;
-    padding: 0 10px;
+    padding: 0 16px;
     .producto-price {
       color: $brand-grey_dark;
       font-size: 24px;
@@ -43,9 +45,7 @@
     vertical-align: top;
     padding-top: 35px;
   }
-  &:hover {
-    cursor: pointer;
-  }
+
   &:last-of-type {
     border-bottom: none;
   }

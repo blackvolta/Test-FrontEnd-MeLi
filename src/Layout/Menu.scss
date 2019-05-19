@@ -10,46 +10,62 @@ header {
   height: 55px;
   text-align: center;
   z-index: 2;
-  .logo {
-    height: 100%;
-    padding: 9px 20px 9px 0;
-    display: inline-block;
-    vertical-align: top;
-  }
-  form {
-    width: 70%;
-    display: inline-block;
-    position: relative;
-    top: 0;
-    margin-top: 9px;
-    height: 36px;
-    .input-search {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 3px;
-      padding: 5px 15px;
-      font-size: 16px;
-      &:focus {
-        outline: 0;
+  .header-wrapper {
+    .brand {
+      width: 10%;
+      display: inline-block;
+      vertical-align: top;
+      .logo {
+        height: 100%;
+        padding: 9px 20px 9px 0;
+        display: inline-block;
+        vertical-align: top;
       }
     }
-    button[type="submit"] {
-      position: absolute;
+    form {
+      width: 90%;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
       top: 0;
-      right: 0;
-      height: 100%;
-      width: 40px;
-      border: none;
-      border-top-right-radius: 2px;
-      border-bottom-right-radius: 2px;
-      background-color: $brand-grey_light;
-      img {
-        width: 18px;
+      margin-top: 9px;
+      height: 36px;
+      .input-search {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 3px;
+        padding: 5px 15px;
+        font-size: 16px;
+        &:focus {
+          outline: 0;
+        }
       }
-      &:hover {
-        cursor: pointer;
+      button[type="submit"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 40px;
+        border: none;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        background-color: $brand-grey_light;
+        img {
+          width: 18px;
+        }
+        &:hover {
+          cursor: pointer;
+        }
       }
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  header {
+    .header-wrapper {
+      padding: 0;
     }
   }
 }

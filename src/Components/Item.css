@@ -7,15 +7,16 @@ body {
   padding: 16px 0;
   border-bottom: 1px solid #eeeeee;
   position: relative; }
-  .producto .producto-img {
-    height: 180px;
-    border-radius: 4px;
+  .producto .link {
     display: inline-block;
     vertical-align: top; }
+  .producto .producto-img {
+    height: 180px;
+    border-radius: 4px; }
   .producto .producto-info {
     display: inline-block;
     width: 60%;
-    padding: 0 10px; }
+    padding: 0 16px; }
     .producto .producto-info .producto-price {
       color: #333333;
       font-size: 24px;
@@ -37,7 +38,5 @@ body {
     color: #666666;
     vertical-align: top;
     padding-top: 35px; }
-  .producto:hover {
-    cursor: pointer; }
   .producto:last-of-type {
     border-bottom: none; }

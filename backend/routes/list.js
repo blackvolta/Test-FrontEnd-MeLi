@@ -21,7 +21,7 @@ function buscarItems(req, res) {
           },
           picture: item.thumbnail,
           condition: item.condition,
-          free_shipping: true,
+          free_shipping: item.shipping ? item.shipping.free_shipping : false,
           address: item.address ? item.address.city_name : ""
         };
       });

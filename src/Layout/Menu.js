@@ -24,23 +24,29 @@ class Menu extends Component {
   render() {
     return (
       <header>
-        <a href="/">
-          <img className="logo" src={logo} tabIndex={1} />
-        </a>
-        <form action="" onSubmit={this.handleSearchSubmit}>
-          <input
-            type="text"
-            name="searchbox"
-            id="searchbox"
-            onChange={e => this.updateInputValue(e)}
-            className="input-search"
-            placeholder="Nunca dejes de buscar"
-            tabIndex={2}
-          />
-          <button type="submit" alt="buscar" tabIndex={3}>
-            <img src={searchIcon} />
-          </button>
-        </form>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-10 col-md-offset-1 header-wrapper">
+              <a href="/" className="brand">
+                <img className="logo" src={logo} tabIndex={1} />
+              </a>
+              <form action="" onSubmit={this.handleSearchSubmit}>
+                <input
+                  type="text"
+                  name="searchbox"
+                  id="searchbox"
+                  onChange={e => this.updateInputValue(e)}
+                  className="input-search"
+                  placeholder="Nunca dejes de buscar"
+                  tabIndex={2}
+                />
+                <button type="submit" alt="buscar" tabIndex={3}>
+                  <img src={searchIcon} />
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </header>
     );
   }
