@@ -13,6 +13,7 @@ function buscarDetail(req, res) {
     .then(
       axios.spread((items, descriptions) => {
         const item = items.data;
+        const currency = item.currency_id;
         const amount = Math.floor(item.price);
         const decimals = +(item.price % 1).toFixed(2).substring(2);
         const description = descriptions.data;
@@ -25,7 +26,7 @@ function buscarDetail(req, res) {
             id: itemId,
             title: item.title,
             price: {
-              currency: item.currency_id,
+              currency: currency,
               amount: amount,
               decimals: decimals
             },

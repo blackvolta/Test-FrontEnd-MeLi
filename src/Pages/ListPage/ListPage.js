@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Breadcrumb from "../../Components/Breadcrumb";
 import Item from "../../Components/Item";
 import "./ListPage.css";
-import { Link } from "react-router-dom";
 import queryString from "query-string";
 
 class ListPage extends Component {
   constructor() {
     super();
     this.state = {
+      categories: [],
       items: [],
       error: null,
       isLoaded: false
@@ -36,6 +37,7 @@ class ListPage extends Component {
       .then(res => {
         console.log(res.data.items);
         this.setState({
+          categories: res.data.categories,
           items: res.data.items,
           isLoaded: true
         });
@@ -61,6 +63,11 @@ class ListPage extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-10 col-md-offset-1">
+              <div className="row" id="breadcrumb">
+                {this.state.categories.map((category, i) => (
+                  <Breadcrumb data={category} key={i} />
+                ))}
+              </div>
               <div className="row" id="listado-resultados">
                 {this.state.items.map((item, i) => (
                   <Item data={item} key={i} />

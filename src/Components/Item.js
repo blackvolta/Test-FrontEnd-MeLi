@@ -10,16 +10,16 @@ class Item extends Component {
   render() {
     return (
       <div className="producto">
-        <Link class="link" to={"/items/" + this.props.data.id}>
+        <Link className="link" to={"/items/" + this.props.data.id}>
           <img className="producto-img" src={this.props.data.picture} />
         </Link>
         <div className="producto-info">
           <div className="producto-price">
             <span>$</span>
-            {this.props.data.price.currency}
+            {this.props.data.price.amount}
           </div>
           <div className="producto-title">
-            <Link class="link" to={"/items/" + this.props.data.id}>
+            <Link className="link" to={"/items/" + this.props.data.id}>
               {this.props.data.title}
             </Link>
           </div>

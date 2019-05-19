@@ -1,0 +1,10 @@
+.breadcrumb-item {
+  &::after {
+    content: ">";
+  }
+  &:last-of-type {
+    &::after {
+      content: "";
+    }
+  }
+}
